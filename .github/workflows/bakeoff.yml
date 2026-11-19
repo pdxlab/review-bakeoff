@@ -1,0 +1,40 @@
+name: bakeoff
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Weekly on Monday at 06:00 UTC
+    - cron: "0 6 * * 1"
+
+jobs:
+  bakeoff:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install gh CLI (pre-installed on ubuntu-latest, but pin just in case)
+        run: gh --version
+
+      - name: Run bakeoff pipeline
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ARGUS_API_BASE: ${{ secrets.ARGUS_API_BASE }}
+          ARGUS_API_KEY: ${{ secrets.ARGUS_API_KEY }}
+          CODERABBIT_API_KEY: ${{ secrets.CODERABBIT_API_KEY }}
+        run: make bakeoff
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: bakeoff-report
+          path: |
+            report.md
+            data/scores.csv
+          retention-days: 90

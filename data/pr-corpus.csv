@@ -1,0 +1,11 @@
+owner,repo,pr_number,merge_sha,bug_description,bug_fixed_in_pr
+langchain-ai,langchain,[FILL],[FILL],Incorrect chain output format,[FILL]
+crewAIInc,crewAI,[FILL],[FILL],Agent loop termination bug,[FILL]
+openai,openai-python,[FILL],[FILL],Streaming response handling,[FILL]
+anthropics,anthropic-sdk-python,[FILL],[FILL],Rate limit retry logic,[FILL]
+BerriAI,litellm,[FILL],[FILL],Provider fallback failure,[FILL]
+microsoft,promptflow,[FILL],[FILL],Tool output not propagated correctly,[FILL]
+run-llama,llama_index,[FILL],[FILL],Index query returns wrong node,[FILL]
+hwchase17,langchainjs,[FILL],[FILL],Memory buffer not cleared between sessions,[FILL]
+deepset-ai,haystack,[FILL],[FILL],Pipeline branch merging drops documents,[FILL]
+semantic-kernel,semantic-kernel,[FILL],[FILL],Planner skips required function step,[FILL]
